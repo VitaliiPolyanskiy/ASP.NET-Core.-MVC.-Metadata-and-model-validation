@@ -1,36 +1,42 @@
 ﻿@model AspNetCore.Validation.StudentsDb.Models.Book
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Деталі книги";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Подробности</h1>
+<h1 class="mb-4">Детальна інформація про книгу</h1>
+
+<div class="card shadow-sm mb-4">
+    <div class="card-body">
+        <dl class="row mb-0">
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.Author)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Author)
+            </dd>
+
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.Year)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Year)
+            </dd>
+        </dl>
+    </div>
+</div>
 
 <div>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Author)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Author)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Year)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Year)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Редактировать</a> |
-    <a asp-action="Index">На главную страницу</a>
+    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-primary">
+        <i class="bi bi-pencil"></i> Редагувати
+    </a>
+    <a asp-action="Index" class="btn btn-outline-secondary ms-2">Повернутися до списку</a>
 </div>

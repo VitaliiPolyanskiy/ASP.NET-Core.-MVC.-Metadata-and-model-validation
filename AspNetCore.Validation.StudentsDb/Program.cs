@@ -3,21 +3,21 @@ using AspNetCore.Validation.StudentsDb.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Получаем строку подключения из файла конфигурации
+// Отримуємо рядок підключення з файлу конфігурації
 string? connection = builder.Configuration.GetConnectionString("DefaultConnection");
 
-// добавляем контекст ApplicationContext в качестве сервиса в приложение
+// Додаємо контекст БД як сервіс у застосунок
 builder.Services.AddDbContext<StudentContext>(options => options.UseSqlServer(connection));
 
-// Добавляем сервисы MVC
+// Додаємо сервіси MVC
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
-app.UseStaticFiles(); // обрабатывает запросы к файлам в папке wwwroot
+app.UseStaticFiles(); // Обробляє запити до статичних файлів у папці wwwroot
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Students}/{action=Create}/{id?}");
+    pattern: "{controller=Students}/{action=Index}/{id?}"); 
 
 app.Run();

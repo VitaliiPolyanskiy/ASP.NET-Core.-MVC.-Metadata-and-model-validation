@@ -1,26 +1,23 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using AspNetCore.Validation.StudentsDb.Annotations;
 
-namespace AspNetCore.Validation.StudentsDb.Models
+namespace AspNetCore.Validation.StudentsDb.Models;
+
+public class Book
 {
+    public int Id { get; set; }
 
-    public class Book
-    {
-        public int Id { get; set; }
+    [Required(ErrorMessage = "Поле є обов'язковим для заповнення.")]
+    [StringLength(50, MinimumLength = 3, ErrorMessage = "Довжина має бути від 3 до 50 символів.")]
+    [Display(Name = "Назва")]
+    public required string Name { get; set; }
 
-        [Required(ErrorMessage = "Поле должно быть установлено.")]
-        [StringLength(50, MinimumLength = 3, ErrorMessage = "Длина строки должна быть от 3 до 50 символов")]
-        [Display(Name = "Название")]
-        public string? Name { get; set; }
+    [Required(ErrorMessage = "Поле є обов'язковим для заповнення.")]
+    [Display(Name = "Автор")]
+    [MyAuthors(["Шилдт", "Троєлсен", "Нейгел", "Ріхтер", "Страуструп"], ErrorMessage = "Недопустимий автор.")]
+    public required string Author { get; set; }
 
-        [Required]
-        [Display(Name = "Автор")]
-        [MyAuthors(["Шилдт", "Троельсен", "Нейгел", "Рихтер", "Страуструп"], ErrorMessage = "Недопустимый автор")]
-        public string? Author { get; set; }
-
-        [Required]
-        [Display(Name = "Год")]
-        public int Year { get; set; }
-    }
-
+    [Required(ErrorMessage = "Поле є обов'язковим для заповнення.")]
+    [Display(Name = "Рік видання")]
+    public int Year { get; set; }
 }

@@ -1,29 +1,17 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace AspNetCore.Validation.StudentsDb.Annotations
+namespace AspNetCore.Validation.StudentsDb.Annotations;
+
+public class MyAuthorsAttribute(string[] authors) : ValidationAttribute
 {
-    public class MyAuthorsAttribute : ValidationAttribute
+    private readonly string[] _authors = authors;
+
+    public override bool IsValid(object? value)
     {
-        //массив для хранения допустимых авторов
-        private static string[] myAuthors;
-
-        public MyAuthorsAttribute(string[] Authors)
+        if (value is string strVal)
         {
-            myAuthors = Authors;
+            return _authors.Contains(strVal);
         }
-
-        public override bool IsValid(object? value)
-        {
-            if (value != null)
-            {
-                string? strval = value.ToString();
-                for (int i = 0; i < myAuthors.Length; i++)
-                {
-                    if (strval == myAuthors[i])
-                        return true;
-                }
-            }
-            return false;
-        }
+        return false;
     }
 }

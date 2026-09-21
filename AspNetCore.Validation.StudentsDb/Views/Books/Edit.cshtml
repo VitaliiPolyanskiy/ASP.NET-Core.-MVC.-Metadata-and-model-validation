@@ -1,44 +1,50 @@
 ﻿@model AspNetCore.Validation.StudentsDb.Models.Book
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Редагування книги";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Редактирование книги</h1>
+<h1 class="mb-4">Редагування книги</h1>
 
-<hr />
-<div class="row">
-    <div class="col-md-4">
+<div class="card shadow-sm col-md-6">
+    <div class="card-body">
         <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+            <!-- Приховане поле для передачі ID книги -->
             <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
+
+            <div class="mb-3">
+                <label asp-for="Name" class="form-label fw-bold"></label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Author" class="control-label"></label>
+
+            <div class="mb-3">
+                <label asp-for="Author" class="form-label fw-bold"></label>
                 <input asp-for="Author" class="form-control" />
                 <span asp-validation-for="Author" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Year" class="control-label"></label>
+
+            <div class="mb-3">
+                <label asp-for="Year" class="form-label fw-bold"></label>
                 <input asp-for="Year" class="form-control" />
                 <span asp-validation-for="Year" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Сохранить" class="btn btn-primary" />
+
+            <div class="mt-4">
+                <button type="submit" class="btn btn-primary">
+                    <i class="bi bi-check-circle"></i> Зберегти зміни
+                </button>
+                <a asp-action="Index" class="btn btn-outline-secondary ms-2">Повернутися до списку</a>
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">На главную страницу</a>
-</div>
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

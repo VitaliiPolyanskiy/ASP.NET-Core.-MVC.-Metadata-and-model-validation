@@ -1,48 +1,56 @@
 ﻿@model AspNetCore.Validation.StudentsDb.Models.Student
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Деталі студента";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Подробности</h1>
+<h1 class="mb-4">Детальна інформація про студента</h1>
+
+<div class="card shadow-sm mb-4">
+    <div class="card-body">
+        <dl class="row mb-0">
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+            
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.Surname)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Surname)
+            </dd>
+            
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.Age)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Age)
+            </dd>
+            
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.GPA)
+            </dt>
+            <dd class="col-sm-9">
+                <span class="badge bg-info text-dark">@Html.DisplayFor(model => model.GPA)</span>
+            </dd>
+            
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+        </dl>
+    </div>
+</div>
 
 <div>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Surname)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Surname)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Age)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Age)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.GPA)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.GPA)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Редактировать</a> |
-    <a asp-action="Index">На главную страницу</a>
+    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-primary">
+        <i class="bi bi-pencil"></i> Редагувати
+    </a>
+    <a asp-action="Index" class="btn btn-outline-secondary ms-2">Повернутися до списку</a>
 </div>
